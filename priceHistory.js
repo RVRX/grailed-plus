@@ -8,7 +8,7 @@ let parsedID = parseToID(url);
 if (parsedID !== null) {
     console.log("fetching json with ID:",parsedID);
     fetchJSON(parsedID);
-}
+} else throw TypeError("ID could not be parsed!");
 
 function fetchJSON(listing) {
     try {
@@ -96,7 +96,7 @@ function parseToID(input) {
         // return input
     } else {
         console.warn("This is not a valid URL or ID! " + input);
-        return null;//TODO throw an exception?
+        return null;
     }
 }
 
