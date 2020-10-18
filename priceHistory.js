@@ -31,7 +31,12 @@ function fetchJSONCallback(data) {
     let pageLocation = document.getElementsByClassName("listing-price")[0];
 
     //fill out price history contents
-    listPriceHistory(priceHistoryData, pageLocation);
+    if (priceHistoryData.length !== 0) {
+        listPriceHistory(priceHistoryData, pageLocation);
+    } else {
+        //say no price drops
+        pageLocation.innerHTML += "There are no price drops on record for this listing."
+    }
 
     //add "Raw JSON" Button.
     let locationForRawJSON = document.getElementsByClassName("ListingSellerCard")[0];
