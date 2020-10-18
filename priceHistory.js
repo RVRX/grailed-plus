@@ -1,6 +1,3 @@
-// import "jquery-3.5.1.min";
-
-document.body.style.border = "5px solid red";
 console.info("Starting priceHistory v0.1.0");
 
 //get current window url
@@ -30,46 +27,47 @@ function fetchJSONCallback(data) {
     let priceHistoryData = data["data"]["price_drops"];
     console.log("Price History Data", priceHistoryData);
 
-    //grab location to place button,
+    //grab location to place price info,
     let pageLocation = document.getElementsByClassName("listing-price")[0];
 
-    //create button at location,
-    pageLocation.innerHTML += "<button type='button'>View Price History</button>";
+    //fill out price history contents
+    listPriceHistory(priceHistoryData, pageLocation);
 
+    //add "Raw JSON" Button.
+    let locationForRawJSON = document.getElementsByClassName("ListingSellerCard")[0];
+    locationForRawJSON.outerHTML += "<div class=''><button class='button _large _border' title='meta-data' id='meta-data' onclick='window.open(\"https://www.grailed.com/api/listings/"+ parsedID + "\");'><span>Listing Meta-data</span></button></div>"
 
-    //add button onclick event,
-
-    //fill out table
-    console.info("Gunna make a table!")
-    makeTable(priceHistoryData, pageLocation);
 }
 
-function makeTable(rowData, tableLocation) {
-    tableLocation.innerHTML += "<table id='price-history-table' style='padding: 0 !important;'></table>";
-    // let table = document.createElement('table');
-    let table = document.getElementById("price-history-table");
-    // let tableHead = table.createTHead();
-    // tableHead.insertRow(0).insertCell(0).innerHTML = "Price";
-    table.createTHead().insertRow(0).insertCell(0).innerHTML = "Price";
-    //iterate over each element
-    table.createTBody();
-    for (let i = 0; i < rowData.length; i++) {
-        table.insertRow().insertCell(0).innerHTML = rowData[i];
+//puts the price history and deltas.
+function listPriceHistory(data, listLocation) {
+    listLocation.innerHTML += "<b>Price History:</b> ";
+    for (let i = 0; i < (data.length-1); i++) {
+        listLocation.innerHTML += "$" + data[i] + ", ";
     }
-    // table.createTBody().insertRow(0).insertCell(0).innerHTML = null;
+    listLocation.innerHTML += "$" + data[data.length-1];
+
+    //Price Deltas
+    listLocation.innerHTML += "</br><b>Avg. Price Change:</b> -$" + getDelta(data);
 }
 
-//create button table.
-let buttonContents = document.createElement('div');
-buttonContents.innerHTML = ""; //table
-document.body.appendChild(buttonContents);
+//gets the avg. price change (Helper for listPriceHistory)
+function getDelta(data) {
+    let deltas = [];
+    for (let i = 0; i < data.length-1; i++) {
+        deltas.push(data[i]-data[i+1]);
+    }
+    console.log("deltas:",deltas)
+    let avg = 0;
+    for (let i = 0; i < deltas.length; i++) {
+        avg += deltas[i];
+    }
+    return avg/deltas.length;
+
+}
 
 
-
-
-
-
-//create button,
+    /*-----------------------PARSING FUNCTIONS--------------------------*/
 
 //Parses the into to an ID, returns null if invalid.
 function parseToID(input) {
