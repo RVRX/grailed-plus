@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "Grailed Price History",
+  "version": "0.1.0",
+
+  "description": "Add a price history button to grailed.com listing pages",
+
+  "content_scripts": [
+    {
+      "matches": ["*://www.grailed.com/listings/*","*://grailed.com/listings/*"],
+      "js": ["jquery-3.5.1.min.js", "priceHistory.js"]
+    }
+  ]
+
+}
