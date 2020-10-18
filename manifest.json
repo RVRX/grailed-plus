@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "name": "Grailed Price History",
-  "version": "0.1.0",
+  "version": "1.0.0",
 
-  "description": "Add a price history button to grailed.com listing pages",
+  "description": "See a grailed.com listing's price history, and other hidden values.",
 
   "icons": {
     "48": "icons/grailed-48.png"
