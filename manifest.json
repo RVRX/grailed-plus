@@ -5,6 +5,10 @@
 
   "description": "Add a price history button to grailed.com listing pages",
 
+  "icons": {
+    "48": "icons/grailed-48.png"
+  },
+
   "content_scripts": [
     {
       "matches": ["*://www.grailed.com/listings/*","*://grailed.com/listings/*"],
