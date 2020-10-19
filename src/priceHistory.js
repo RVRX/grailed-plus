@@ -1,4 +1,4 @@
-console.info("Starting priceHistory v0.1.0");
+console.info("Starting priceHistory v1.1.0");
 
 //get current window url
 let url = window.location.href;
