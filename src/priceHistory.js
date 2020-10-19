@@ -50,7 +50,7 @@ function listPriceHistory(data, listLocation) {
     for (let i = 0; i < (data.length-1); i++) {
         listLocation.innerHTML += "$" + data[i] + ", ";
     }
-    listLocation.innerHTML += "$" + data[data.length-1];
+    listLocation.innerHTML += "$" + data[data.length-1] + ". <em>\(total drops: " + data.length + "\)</em>";
 
     //Price Deltas
     listLocation.innerHTML += "</br><b>Avg. Price Drop:</b> $" + Math.round(getDelta(data));
