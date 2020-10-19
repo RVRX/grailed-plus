@@ -59,32 +59,13 @@ function listPriceHistory(data, listLocation) {
 
 //estimates when the seller will next drop the price. returns days till next drop.
 function getExpectedDrop(data, pageLocation) {
-    let amountOfDrops = data["price_drops"].length;
-    //get time between
     let dateUpdated = new Date(data["price_updated_at"]);
     let dateCreated = new Date(data["created_at"]);
-    let timeElapsedFromCreationToLastUpdateMS = dateUpdated - dateCreated;
-    console.log("time elapsed ms: ",timeElapsedFromCreationToLastUpdateMS);
-    let timeElapsedFromCreatedToLastUpdateHours = timeElapsedFromCreationToLastUpdateMS/3.6e+6;
-    console.log("time elapsed in hours:",timeElapsedFromCreatedToLastUpdateHours);
-    let avgDropsPerHour = amountOfDrops/timeElapsedFromCreatedToLastUpdateHours;
-    console.log("avg drops per hour", avgDropsPerHour);
-    let avgDropsPerDay = avgDropsPerHour*24;
-    console.log("avgDropsPerDay",avgDropsPerDay);
-    let timeSinceLastDropMS = Date.now() - dateUpdated;
-    console.log("timeSinceLastDropMS",timeSinceLastDropMS);
-    let timeSinceLastDropHour = timeSinceLastDropMS/3.6e+6;
-    console.log("timeSinceLastDropHour",timeSinceLastDropHour);
-    let hoursPerDrop = timeElapsedFromCreatedToLastUpdateHours/amountOfDrops;
-    console.log("hours per drop 1",hoursPerDrop);
-    //TIME TILL NEXT EXPECTED DROP
-    let nextExpectedDropHR =  hoursPerDrop - timeSinceLastDropHour;
-    console.log("nextExpectedDrop",nextExpectedDropHR);
-    let nextExpectedDropDY = nextExpectedDropHR/24;
-    console.log("nextExpectedDropDY",nextExpectedDropDY);
+    let nextExpectedDropMS = (dateUpdated - dateCreated)/(data["price_drops"].length) - (Date.now() - dateUpdated);
+    console.log("refactoredFormula",nextExpectedDropMS/8.64e+7);
 
     //set values
-    pageLocation.innerHTML += "</br><b>Next Expected Drop In:</b> " + Math.round(nextExpectedDropDY) + " days <a href='https://github.com/RVRX/grailed-plus/wiki/About-%22Next-Expected-Drop%22-Feature' target='_blank' title='What is this?'><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-help-circle\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"></path><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg></a>";
+    pageLocation.innerHTML += "</br><b>Next Expected Drop In:</b> " + Math.round(nextExpectedDropMS/8.64e+7) + " days <a href='https://github.com/RVRX/grailed-plus/wiki/About-%22Next-Expected-Drop%22-Feature' target='_blank' title='What is this?'><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-help-circle\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"></path><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg></a>";
 }
 
 //gets the avg. price change (Helper for listPriceHistory)
