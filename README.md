@@ -7,4 +7,5 @@ Browser Extension for checking an item's price history on grailed.com.
 * Full listing meta-data file
 
 #### Screenshots:
-![features-screenshot](https://i.imgur.com/b63E72A.png "Features")
+![features-screenshot1](docs/screenshot-sidebar-upper.png "Listing Price Data")
+![features-screenshot1](docs/screenshot-sidebar-lower.png "Listing JSON")
