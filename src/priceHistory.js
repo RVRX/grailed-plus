@@ -39,7 +39,7 @@ function fetchJSONCallback(data) {
     }
 
     //add "Raw JSON" Button.
-    let locationForRawJSON = document.getElementsByClassName("ListingSellerCard")[0];
+    let locationForRawJSON = document.getElementsByClassName("-metadata")[0];
     locationForRawJSON.outerHTML += "<div class=''><button class='button _large _border' title='meta-data' id='meta-data' onclick='window.open(\"https://www.grailed.com/api/listings/"+ parsedID + "\");'><span>Listing Meta-data</span></button></div>"
 
 }
