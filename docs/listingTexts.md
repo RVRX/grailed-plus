@@ -3,7 +3,7 @@
 ### Title
 Grailed Plus // Grailed+
 ### Summary
-Price History and Other Small but Useful Enhancements to Grailed.com Listings.
+Price history and other small but useful enhancements to Grailed.com listings.
 ### Description
 Grailed Plus lets you see an item's price history, along with the following current features: 
  * Price history
@@ -11,19 +11,17 @@ Grailed Plus lets you see an item's price history, along with the following curr
  * Full listing meta-data file
 ### Category
 Shopping
-### Extension URL
-~~
-Github Pages Page / Repo Homepage
+### Extension URL / Homepage
+https://github.com/RVRX/grailed-plus
 ### Support URL
-~~
-GitHub Issues Page
-
+https://github.com/RVRX/grailed-plus/issues
 ## Assets
 ### Icons
 #### Store Icon (128px)
-~~
-#### Icon Small (48px)
-~~
+![128px icon](grailed-128.png "128px icon")
 #### Icon Large (96px)
+![96px icon](../src/icons/grailed-96.png "96px icon")
+#### Icon Small (48px)
+![48px icon](../src/icons/grailed-48.png "48px icon")
 ### Screenshots
 ~~
