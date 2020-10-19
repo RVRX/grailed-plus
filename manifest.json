@@ -1,12 +1,13 @@
 {
   "manifest_version": 2,
-  "name": "Grailed Price History",
-  "version": "1.0.0",
+  "name": "Grailed Plus",
+  "version": "1.0.1",
 
-  "description": "See a grailed.com listing's price history, and other hidden values.",
+  "description": "Enhancements for grailed.com listings.",
 
   "icons": {
-    "48": "icons/grailed-48.png"
+    "48": "icons/grailed-48.png",
+    "96": "icons/grailed-96.png"
   },
 
   "content_scripts": [
