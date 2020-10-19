@@ -1,4 +1,4 @@
-# Grailed Price Checker
+# Grailed Plus // Grailed+
 Browser Extension for checking an item's price history on grailed.com.
 
 ## Current Features
