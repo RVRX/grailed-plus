@@ -53,7 +53,7 @@ function listPriceHistory(data, listLocation) {
     listLocation.innerHTML += "$" + data[data.length-1];
 
     //Price Deltas
-    listLocation.innerHTML += "</br><b>Avg. Price Change:</b> -$" + getDelta(data);
+    listLocation.innerHTML += "</br><b>Avg. Price Drop:</b> $" + Math.round(getDelta(data));
 }
 
 //gets the avg. price change (Helper for listPriceHistory)
