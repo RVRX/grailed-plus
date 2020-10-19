@@ -2,3 +2,4 @@
 *.iml
 *.\idea
 /web-ext-artifacts/*
+*.zip
