@@ -1,10 +1,7 @@
 #meta-data { /* "Listing Meta-Data" Button Style*/
     appearance: none !important;
     background-color: rgb(255, 255, 255) !important;
-    border-bottom-left-radius: 2px !important;
-    border-bottom-right-radius: 2px !important;
-    border-top-left-radius: 2px !important;
-    border-top-right-radius: 2px !important;
+    border-radius: 2px !important;
     box-shadow: none !important;
     box-sizing: border-box !important;
     color: rgb(0, 0, 0) !important;
@@ -31,20 +28,10 @@
     height: 50px !important;
     letter-spacing: normal !important;
     line-height: 20px !important;
-    margin-bottom: 30px !important;
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-    margin-top: 0px !important;
-    outline-color: rgb(0, 0, 0) !important;
-    outline-style: none !important;
-    outline-width: 0px !important;
+    margin: 0 0 30px !important;
+    outline: rgb(0, 0, 0) none 0 !important;
     overflow: visible !important;
-    overflow-x: visible !important;
-    overflow-y: visible !important;
-    padding-bottom: 14px !important;
-    padding-left: 25px !important;
-    padding-right: 25px !important;
-    padding-top: 14px !important;
+    padding: 14px 25px !important;
     text-align: center !important;
     text-decoration: rgb(0, 0, 0) !important;
     text-decoration-color: rgb(0, 0, 0) !important;
