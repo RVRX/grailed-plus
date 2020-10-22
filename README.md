@@ -14,5 +14,7 @@ Browser Extension for checking an item's price history on grailed.com.
 ## Installation
 #### Firefox
 Stable Release Available on the [Firefox Addons Store](https://addons.mozilla.org/en-US/firefox/addon/grailed-plus/).
-#### Chromium
-Not currently available through any markets, but is compatible with at least Google Chrome, and can be installed manually. See the [releases](https://github.com/RVRX/grailed-plus/releases) pane on the sidebar for downloads.
+#### Google Chrome
+Stable Release Available on the [Chrome Web Store](https://chrome.google.com/webstore/detail/grailed-plus/ipecfmmbppgpommpibaandmonmhohfnd). For Chromium see Other.
+#### Other / Latest (pre)Release
+It can take a bit to get latest releases approved on some webstores (looking at you Google), so the latest patches and releases can be installed manually. On the right sidebar you will find the [Releases](https://github.com/RVRX/grailed-plus/releases) section. Download and extract the latest release `grailed_plus-X.X.X.zip`, and follow your browser's extension installation documentation from there.
