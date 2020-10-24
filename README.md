@@ -13,7 +13,7 @@ Browser Extension for checking an item's price history on grailed.com.
 
 ## Installation
 #### Firefox
-Stable Release Available on the [Firefox Addons Store](https://addons.mozilla.org/en-US/firefox/addon/grailed-plus/).
+Stable Release Available on the [Firefox Addons Store](https://addons.mozilla.org/addon/grailed-plus/).
 #### Google Chrome
 Stable Release Available on the [Chrome Web Store](https://chrome.google.com/webstore/detail/grailed-plus/ipecfmmbppgpommpibaandmonmhohfnd). For Chromium see Other.
 #### Other / Latest (pre)Release
