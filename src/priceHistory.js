@@ -1,5 +1,3 @@
-console.info("Starting priceHistory v1.1.1");
-
 //get current window url
 let url = window.location.href;
 
@@ -12,7 +10,6 @@ if (parsedID !== null) {
 
 function fetchJSON(listing) {
     try {
-        // $.getJSON("https://cors-anywhere.herokuapp.com/https://www.grailed.com/api/listings/"+listing, fetchJSONCallback);
         $.getJSON("https://www.grailed.com/api/listings/"+listing, fetchJSONCallback);
     } catch (e) {
         console.log("Error Getting JSON! Bad ID?",e);
@@ -25,7 +22,6 @@ function fetchJSONCallback(data) {
 
     //get price history from JSON,
     let priceHistoryData = data["data"]["price_drops"];
-    console.log("Price History Data", priceHistoryData);
 
     //grab location to place price info,
     let pageLocation = document.getElementsByClassName("listing-price")[0];
@@ -62,10 +58,16 @@ function getExpectedDrop(data, pageLocation) {
     let dateUpdated = new Date(data["price_updated_at"]);
     let dateCreated = new Date(data["created_at"]);
     let nextExpectedDropMS = (dateUpdated - dateCreated)/(data["price_drops"].length) - (Date.now() - dateUpdated);
-    console.log("refactoredFormula",nextExpectedDropMS/8.64e+7);
+    let expectedDropEndResult = nextExpectedDropMS/8.64e+7;
 
-    //set values
-    pageLocation.innerHTML += "</br><b>Next Expected Drop In:</b> " + Math.round(nextExpectedDropMS/8.64e+7) + " days <a href='https://github.com/RVRX/grailed-plus/wiki/About-%22Next-Expected-Drop%22-Feature' target='_blank' title='What is this?'><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-help-circle\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"></path><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg></a>";
+    //if non-negative send as is, if not send explanation
+    //if expected result is older
+    if (expectedDropEndResult >= -30) {
+        //set values
+        pageLocation.innerHTML += "</br><b>Next Expected Drop In:</b> " + Math.round(nextExpectedDropMS/8.64e+7) + " days <a href='https://github.com/RVRX/grailed-plus/wiki/About-%22Next-Expected-Drop%22-Feature' target='_blank' title='What is this?'><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-help-circle\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"></path><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg></a>";
+    } else {
+        pageLocation.innerHTML += "</br><b>Next Expected Drop In:</b> " + "Listing Appears Inactive. Last Update Was " + dateUpdated.toDateString() + " <a href='https://github.com/RVRX/grailed-plus/wiki/About-%22Next-Expected-Drop%22-Feature' target='_blank' title='What is this?'><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-help-circle\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"></path><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg></a>";
+    }
 }
 
 //gets the avg. price change (Helper for listPriceHistory)
@@ -74,7 +76,6 @@ function getDelta(data) {
     for (let i = 0; i < data.length-1; i++) {
         deltas.push(data[i]-data[i+1]);
     }
-    console.log("deltas:",deltas)
     let avg = 0;
     for (let i = 0; i < deltas.length; i++) {
         avg += deltas[i];
@@ -97,7 +98,6 @@ function parseToID(input) {
                 for (let j = lastSlash; j < input.length; j++) { //from the lastSlash to end, look for '-', remove dash and everything after it.
                     if (/^-+$/.test(input.charAt(j))) {
                         let firstDash = j;
-                        console.log(input.slice(lastSlash,firstDash));
                         return input.slice(lastSlash,firstDash);
                     }
                 }
@@ -120,6 +120,5 @@ function isValidID(id) {
 
 //checks if arg contains "grailed.com/listing"
 function isValidURL(url) {
-    // console.log(url.contains("grailed.com.listing"))
     return url.includes("grailed.com/listing");
 }
