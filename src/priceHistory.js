@@ -50,7 +50,7 @@ function listPriceHistory(data, listLocation) {
     listLocation.innerHTML += "$" + data[data.length-1] + ". <em>\(total drops: " + data.length + "\)</em>";
 
     //Price Deltas
-    listLocation.innerHTML += "</br><b>Avg. Price Drop:</b> $" + Math.round(getDelta(data));
+    listLocation.innerHTML += "</br><b>Avg. Price Drop:</b> " + getDeltaPercent(data) + "% ($" + Math.round(getDelta(data)) + ")";
 }
 
 //estimates when the seller will next drop the price. returns days till next drop.
@@ -82,6 +82,19 @@ function getDelta(data) {
     }
     return avg/deltas.length;
 
+}
+
+//gets the av,g price change, returns percent. (Helper for listPriceHistory)
+function getDeltaPercent(data) {
+    let percents = [];
+    for (let i = 0; i < data.length - 1; i++) {
+        percents.push(100-(data[i+1]/data[i])*100);
+    }
+    let avg = 0;
+    for (let i = 0; i < percents.length; i++) {
+        avg += percents[i];
+    }
+    return Math.floor(avg/percents.length);
 }
 
 
