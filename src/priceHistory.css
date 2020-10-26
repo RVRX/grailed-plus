@@ -45,3 +45,7 @@
     transition-timing-function: ease, ease, ease !important;
     width: 380px !important;
 }
+
+.alert {
+    color: var(--colors--alert) !important;
+}
