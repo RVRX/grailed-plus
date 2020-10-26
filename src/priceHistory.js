@@ -97,8 +97,7 @@ function parseToID(input) {
                 let lastSlash = input.length-(i+1);
                 for (let j = lastSlash; j < input.length; j++) { //from the lastSlash to end, look for '-', remove dash and everything after it.
                     if (/^-+$/.test(input.charAt(j))) {
-                        let firstDash = j;
-                        return input.slice(lastSlash,firstDash);
+                        return input.slice(lastSlash,j);
                     }
                 }
             }
