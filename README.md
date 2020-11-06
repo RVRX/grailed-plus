@@ -12,7 +12,7 @@ Browser Extension for checking an item's price history on grailed.com.
 #### Feature Screenshots:
 | Price History & Drop Average | Listing Meta-Data button (towards bottom of page) |
 |---------------|---------------------------------------------------|
-|![features-screenshot1](https://i.imgur.com/5biQxBW.png "Listing Price Data")| ![features-screenshot1](docs/screenshot-sidebar-lower.png "Listing JSON") <br> <br> <br> <br>  |
+|![features-screenshot1](https://i.imgur.com/nUMCu0Q.png "Listing Price Data")| ![features-screenshot1](docs/screenshot-sidebar-lower.png "Listing JSON") <br> <br> <br> <br>  |
 
 ## Installation
 #### Firefox
