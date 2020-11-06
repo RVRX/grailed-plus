@@ -35,6 +35,12 @@ function fetchJSONCallback(data) {
         pageLocation.innerHTML += "There are no price drops on record for this listing."
     }
 
+    //add seller account creation date
+    let locationForAccountCreationDate = document.getElementsByClassName("listing-description-wrapper")[0];
+    console.log("locationForAccCreateDate",locationForAccountCreationDate);
+    let creationDate = new Date(data["data"]["seller"]["created_at"]);
+    locationForAccountCreationDate.insertAdjacentText("beforebegin", "Account Creation Date: " + creationDate.toDateString());
+
     //add "Raw JSON" Button.
     let locationForRawJSON = document.getElementsByClassName("-metadata")[0];
     locationForRawJSON.outerHTML += "<div class=''><button class='button _large _border' title='meta-data' id='meta-data' onclick='window.open(\"https://www.grailed.com/api/listings/"+ parsedID + "\");'><span>Listing Meta-data <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-external-link\"><path d=\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"></path><polyline points=\"15 3 21 3 21 9\"></polyline><line x1=\"10\" y1=\"14\" x2=\"21\" y2=\"3\"></line></svg></span></button></div>"
