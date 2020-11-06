@@ -4,12 +4,15 @@ Browser Extension for checking an item's price history on grailed.com.
 ## Current Features
 * Price history
 * Average price drop
+* Next expected drop
+* Seller account creation date
 * Full listing meta-data file
+* and more...
 
 #### Feature Screenshots:
 | Price History & Drop Average | Listing Meta-Data button (towards bottom of page) |
 |---------------|---------------------------------------------------|
-|![features-screenshot1](docs/screenshot-sidebar-upper.png "Listing Price Data")| ![features-screenshot1](docs/screenshot-sidebar-lower.png "Listing JSON") <br> <br> <br> <br>  |
+|![features-screenshot1](https://i.imgur.com/5biQxBW.png "Listing Price Data")| ![features-screenshot1](docs/screenshot-sidebar-lower.png "Listing JSON") <br> <br> <br> <br>  |
 
 ## Installation
 #### Firefox
