@@ -25,7 +25,6 @@ function fetchJSONCallback(data) {
 
     //grab location to place price info,
     let pageLocation = document.getElementsByClassName("ListingPage-Price")[0];
-    console.warn(pageLocation);
 
     //fill out price history contents
     if (priceHistoryData.length !== 0) {
@@ -73,7 +72,6 @@ function listPriceHistory(data, listLocation) {
 
     //add span class around content to add (for styles)
     contentToAdd = "</br><span class='Text Body'>" + contentToAdd + "</span>"
-    console.warn(contentToAdd);
 
     //add to page
     listLocation.innerHTML += contentToAdd;
