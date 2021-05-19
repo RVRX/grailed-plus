@@ -24,7 +24,8 @@ function fetchJSONCallback(data) {
     let priceHistoryData = data["data"]["price_drops"];
 
     //grab location to place price info,
-    let pageLocation = document.getElementsByClassName("listing-price")[0];
+    let pageLocation = document.getElementsByClassName("ListingPage-Price")[0];
+    console.warn(pageLocation);
 
     //fill out price history contents
     if (priceHistoryData.length !== 0) {
@@ -49,22 +50,33 @@ function fetchJSONCallback(data) {
 
 //puts the price history and deltas.
 function listPriceHistory(data, listLocation) {
-    listLocation.innerHTML += "<b>Price History:</b> ";
+
+    //variable for new HTML content to be built in
+    let contentToAdd = "";
+
+    contentToAdd += "<b>Price History:</b> ";
     for (let i = 0; i < (data.length-1); i++) {
-        listLocation.innerHTML += "$" + data[i] + ", ";
+        contentToAdd += "$" + data[i] + ", ";
     }
-    listLocation.innerHTML += "$" + data[data.length-1] + ". <em>\(total drops: " + data.length + "\)</em>";
+    contentToAdd += "$" + data[data.length-1] + ". <em>\(total drops: " + data.length + "\)</em>";
 
     //Price Deltas
     //if price drop is 10% and has dropped more than once give warning (seller intentionally dropping just enough to bump)
     let avgPercentDrop = getDeltaPercent(data);
     if (avgPercentDrop === 10 && data.length > 2) {
         //warning condition
-        listLocation.innerHTML += "</br><b>Avg. Price Drop:</b> <span class='alert'>" + avgPercentDrop + "%</span> ($" + Math.round(getDelta(data)) + ") <a href='https://github.com/RVRX/grailed-plus/wiki/Average-Drop-is-10%25' target='_blank' title='What is this?'><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"red\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-help-circle\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"></path><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg></a>";
+        contentToAdd += "</br><b>Avg. Price Drop:</b> <span class='alert'>" + avgPercentDrop + "%</span> ($" + Math.round(getDelta(data)) + ") <a href='https://github.com/RVRX/grailed-plus/wiki/Average-Drop-is-10%25' target='_blank' title='What is this?'><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"red\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-help-circle\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3\"></path><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg></a>";
     } else {
         //normal condition
-        listLocation.innerHTML += "</br><b>Avg. Price Drop:</b> " + avgPercentDrop + "% ($" + Math.round(getDelta(data)) + ")";
+        contentToAdd += "</br><b>Avg. Price Drop:</b> " + avgPercentDrop + "% ($" + Math.round(getDelta(data)) + ")";
     }
+
+    //add span class around content to add (for styles)
+    contentToAdd = "</br><span class='Text Body'>" + contentToAdd + "</span>"
+    console.warn(contentToAdd);
+
+    //add to page
+    listLocation.innerHTML += contentToAdd;
 }
 
 //estimates when the seller will next drop the price. returns days till next drop.
